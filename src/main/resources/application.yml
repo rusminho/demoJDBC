@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: demo
+
+  datasource:
+    url: jdbc:h2:mem:dbtest      # H2 in-memory database
+    driver-class-name: org.h2.Driver
+    username: sa                 # Default username for H2
+    password: password           # Default password (empty by default)
+    initialization-mode: always  # Always initialize the database on startup
+    schema: classpath:schema.sql # Optional: specify schema SQL file
+    data: classpath:data.sql     # Optional: specify data SQL file
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console           # Path to access the H2 console
+
+  # Optional logging configuration for SQL queries and database activity
+  logging:
+    level:
+      org:
+        springframework:
+          jdbc: DEBUG               # Logs JDBC queries
+      com:
+        example:
+          demo: DEBUG              # Logs queries in your package (replace "com.example" with your package name)
